@@ -22,4 +22,6 @@ Serve this directory with any static HTTP server, or open `index.html` directly.
 
 Morra and Hazel use the game's actual meshes, materials, rigs, animation poses, and face expression atlases, rendered in Blender. Gameplay images are actual development-build screenshots compressed to WebP. No AI-generated promotional imagery is used. Game content and visual quality remain in development.
 
-The PSX presentation uses reduced-resolution derivatives of the same character render and ward screenshot, with ordered dithering and reduced color precision. The full gameplay screenshots remain available in the image viewer. The menu frames, selection pointers, and repeating dither pattern are CSS/SVG.
+The cinematic presentation follows a design mockup selected by the owner. Generated mockups served as design references only; the live page uses actual game assets. Botanical details, the parchment texture, and the irregular paper edge are SVG/CSS.
+
+The current screenshots were captured October 30, 2026, from an isolated Unity 2022.3.62f2 build of that evening's source, including the new town textures, skyline, sky, and title screen. The dusk hero uses a crop of the current skyline capture. Gameplay captures retain their actual HUD and development-build indicators. Original game saves and logs are not published.
