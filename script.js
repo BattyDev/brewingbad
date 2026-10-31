@@ -1,9 +1,9 @@
 (() => {
   const steps = {
-    grow: ['harvest.webp', 'Start with something green.', 'Tend your planters, water your herbs, and harvest them part by part. There are more ingredients to find beyond your own front door.', 'First-person harvesting of bogmint at a workshop planter.'],
-    prep: ['grinding.webp', 'A recipe is only the beginning.', 'Circle the pestle to grind leaves into mash. Make deliberate cuts to prepare roots and mushrooms. Your tools follow your input.', 'Grinding bogmint in a mortar with a pestle.'],
-    brew: ['brewing.webp', 'Put a little effort in the pot.', 'Load your prepared ingredients, light the fire, and work the spoon. Give the batch time to extract before you reach for a bottle.', 'Stirring a green remedy in a copper brewing pot.'],
-    bottle: ['bottling.webp', 'Make every drop count.', 'Pour to the gold mark, release, and cork the bottle. A remedy is only a finished item once you have sealed it.', 'Filling a remedy bottle toward its marked target level.']
+    grow: ['harvest-current.webp', 'Start with something green.', 'Tend your planters, water your herbs, and harvest them part by part. There are more ingredients to find beyond your own front door.', 'First-person harvesting of bogmint at a workshop planter.'],
+    prep: ['grinding-current.webp', 'A recipe is only the beginning.', 'Circle the pestle to grind leaves into mash. Make deliberate cuts to prepare roots and mushrooms. Your tools follow your input.', 'Grinding bogmint in a mortar with a pestle.'],
+    brew: ['brewing-current.webp', 'Put a little effort in the pot.', 'Load your prepared ingredients, light the fire, and work the spoon. Give the batch time to extract before you reach for a bottle.', 'Stirring a green remedy in a copper brewing pot.'],
+    bottle: ['bottling-current.webp', 'Make every drop count.', 'Pour to the gold mark, release, and cork the bottle. A remedy is only a finished item once you have sealed it.', 'Filling a remedy bottle toward its marked target level.']
   };
   const tabs = [...document.querySelectorAll('[role=tab]')];
   function selectStep(tab) {
