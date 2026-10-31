@@ -1,69 +1,31 @@
 (() => {
   const clips = [...document.querySelectorAll('[data-loop-clip]')];
   const visible = new Set();
-  const userPaused = new WeakSet();
-  const automaticPauses = new WeakSet();
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const motionButton = document.getElementById('auto-play');
-  let autoPlay = !reducedMotion.matches && !navigator.connection?.saveData;
-  let explicitPreference = false;
+  const allowsMotion = () => !reducedMotion.matches && !navigator.connection?.saveData;
 
-  function pauseAutomatically(video) {
-    if (!video.paused) { automaticPauses.add(video); video.pause(); }
-  }
   function playIfAllowed(video) {
-    if (autoPlay && !document.hidden && visible.has(video) && !userPaused.has(video)) {
-      video.play().catch(() => { /* Native controls remain available if autoplay is blocked. */ });
-    }
+    if (allowsMotion() && !document.hidden && visible.has(video)) {
+      video.play().catch(() => { /* Keep the capture poster if autoplay is blocked. */ });
+    } else video.pause();
   }
-  function updateMotionButton() {
-    motionButton.setAttribute('aria-pressed', String(autoPlay));
-    motionButton.textContent = 'Auto-play clips: ' + (autoPlay ? 'on' : 'off');
-  }
-  clips.forEach(video => {
-    video.muted = true;
-    video.addEventListener('pause', () => {
-      if (!automaticPauses.delete(video)) userPaused.add(video);
-    });
-    video.addEventListener('play', () => {
-      // Loading a new source can discard the old queued pause event.
-      automaticPauses.delete(video);
-      userPaused.delete(video);
-    });
-  });
+  clips.forEach(video => { video.muted = true; });
 
-  // Download/play only clips the visitor reaches; stop offscreen work.
+  // Treat captures like animated artwork; download and animate only in view.
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver(entries => {
       entries.forEach(({ target: video, isIntersecting, intersectionRatio }) => {
-        if (isIntersecting && intersectionRatio >= .2) {
-          visible.add(video); playIfAllowed(video);
-        } else {
-          visible.delete(video); pauseAutomatically(video);
-        }
+        if (isIntersecting && intersectionRatio >= .2) visible.add(video);
+        else visible.delete(video);
+        playIfAllowed(video);
       });
     }, { threshold: [0, .2] });
     clips.forEach(video => observer.observe(video));
-  } else autoPlay = false;
-  updateMotionButton();
-  motionButton.addEventListener('click', () => {
-    explicitPreference = true;
-    autoPlay = !autoPlay;
-    updateMotionButton();
-    clips.forEach(video => {
-      if (autoPlay) { userPaused.delete(video); playIfAllowed(video); }
-      else pauseAutomatically(video);
-    });
-  });
-  reducedMotion.addEventListener('change', () => {
-    if (explicitPreference) return;
-    autoPlay = !reducedMotion.matches && !navigator.connection?.saveData;
-    updateMotionButton();
-    clips.forEach(video => autoPlay ? playIfAllowed(video) : pauseAutomatically(video));
-  });
-  document.addEventListener('visibilitychange', () => {
-    clips.forEach(video => document.hidden ? pauseAutomatically(video) : playIfAllowed(video));
-  });
+  } else {
+    clips.forEach(video => { visible.add(video); playIfAllowed(video); });
+  }
+  reducedMotion.addEventListener('change', () => clips.forEach(playIfAllowed));
+  document.addEventListener('visibilitychange', () => clips.forEach(playIfAllowed));
 
   const steps = {
     grow: ['harvesting', 'Start with something green.', 'Tend your planters, water your herbs, and harvest them part by part. There are more ingredients to find beyond your own front door.', 'Harvest bogmint by trimming ripe parts from the planter.'],
@@ -80,8 +42,7 @@
       item.tabIndex = item === tab ? 0 : -1;
     });
     const [file, title, copy, label] = steps[tab.dataset.step];
-    pauseAutomatically(processVideo);
-    userPaused.delete(processVideo);
+    processVideo.pause();
     processVideo.poster = 'assets/workshop/' + file + '.webp';
     processVideo.querySelector('source').src = 'assets/workshop/' + file + '.mp4';
     processVideo.querySelector('a').href = 'assets/workshop/' + file + '.mp4';
