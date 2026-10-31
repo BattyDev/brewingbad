@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101d19">
+  <title>Brewing Bad — A little alchemy. A lot of trouble.</title>
+  <meta name="description" content="Get your hands dirty in Brewing Bad, a first-person alchemy game. Grow strange herbs, brew remedies, and build your apothecary in the Tallow Ward. Windows demo coming soon.">
+  <link rel="canonical" href="https://battydev.com/brewingbad/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Brewing Bad — A little alchemy. A lot of trouble.">
+  <meta property="og:description" content="Grow it. Grind it. Brew it. Bottle it. A hands-on alchemy game from BattyDev. Windows demo coming soon.">
+  <meta property="og:image" content="https://battydev.com/brewingbad/assets/social.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css?v=1">
+  <script src="demo-config.js?v=1" defer></script>
+  <script src="script.js?v=1" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="header wrap">
+    <a class="batty" href="/" aria-label="BattyDev home">BATTY<span>DEV</span><span class="slash"> / </span><span class="project-name">BREWING BAD</span></a>
+    <nav aria-label="Main navigation"><a href="#gameplay">The game</a><a href="#screenshots">Screenshots</a><a class="nav-demo" href="#demo">The demo <span aria-hidden="true">↗</span></a></nav>
+  </header>
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="game-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot"></span> A HANDS-ON ALCHEMY GAME</p>
+        <h1 id="game-title">BREWING<span>BAD<span class="title-star" aria-hidden="true">✳</span></span></h1>
+        <p class="tagline">A little alchemy.<br><em>A lot of trouble.</em></p>
+        <p class="hero-description">Strange herbs. Questionable remedies. A workshop to call your own. Roll up your sleeves and make a living, one bottle at a time.</p>
+        <div class="hero-actions"><a class="button primary" href="#demo" data-demo-cta>Demo coming soon <span aria-hidden="true">↗</span></a><a class="text-link" href="#gameplay">See how it plays <span aria-hidden="true">↓</span></a></div>
+        <p class="micro">IN DEVELOPMENT <span>·</span> WINDOWS PC</p>
+      </div>
+      <div class="hero-art">
+        <div class="alchemy-ring" aria-hidden="true"><span>✦</span></div>
+        <span class="art-note" aria-hidden="true">FRESH FROM<br>THE WORKSHOP</span>
+        <img class="alchemists" src="assets/alchemists.webp" width="1440" height="1600" fetchpriority="high" alt="Morra in black and crimson flashes a peace sign beside Hazel in teal, waving. Both are posed from the game's actual 3D models.">
+        <div class="character-label"><span>MORRA & HAZEL</span><small>Your local alchemists.</small></div>
+        <p class="render-note">Actual game models · posed in Blender</p>
+      </div>
+    </section>
+    <div class="recipe-strip" aria-label="The brewing loop"><div class="wrap"><span>GROW IT</span><b aria-hidden="true">✦</b><span>GRIND IT</span><b aria-hidden="true">✦</b><span>BREW IT</span><b aria-hidden="true">✦</b><span>BOTTLE IT</span><b aria-hidden="true">✦</b><span>MAKE YOUR MARK</span></div></div>
+
+    <section id="gameplay" class="gameplay wrap section">
+      <div class="section-heading"><div><p class="eyebrow">01 / GET YOUR HANDS DIRTY</p><h2>Good things come<br>to those who <em>brew.</em></h2></div><p>This is alchemy you actually do. Work the tools yourself, from the first leaf to the final cork. Then take your remedies out into the Tallow Ward.</p></div>
+      <div class="workbench">
+        <div class="step-tabs" role="tablist" aria-label="Explore the brewing process">
+          <button role="tab" id="tab-grow" aria-controls="process-panel" aria-selected="true" data-step="grow"><span>01</span> Grow & gather <b aria-hidden="true">↗</b></button>
+          <button role="tab" id="tab-prep" aria-controls="process-panel" aria-selected="false" tabindex="-1" data-step="prep"><span>02</span> Make your preparations <b aria-hidden="true">↗</b></button>
+          <button role="tab" id="tab-brew" aria-controls="process-panel" aria-selected="false" tabindex="-1" data-step="brew"><span>03</span> Stir up something good <b aria-hidden="true">↗</b></button>
+          <button role="tab" id="tab-bottle" aria-controls="process-panel" aria-selected="false" tabindex="-1" data-step="bottle"><span>04</span> Bottle & cork <b aria-hidden="true">↗</b></button>
+        </div>
+        <div id="process-panel" class="process-panel" role="tabpanel" aria-labelledby="tab-grow" tabindex="0"><button class="image-button" data-open-image aria-label="Enlarge gameplay screenshot"><img id="process-image" src="assets/harvest.webp" width="1280" height="720" loading="lazy" alt="First-person harvesting of bogmint at a workshop planter."><span class="image-badge">IN-GAME CAPTURE <span aria-hidden="true">＋</span></span></button><div class="process-description"><h3 id="process-title">Start with something green.</h3><p id="process-copy">Tend your planters, water your herbs, and harvest them part by part. There are more ingredients to find beyond your own front door.</p></div></div>
+      </div>
+    </section>
+
+    <section class="ward-section"><div class="wrap ward-layout"><div class="ward-image"><button class="image-button" data-open-image aria-label="Enlarge the Tallow Ward screenshot"><img src="assets/ward.webp" width="1600" height="900" loading="lazy" alt="A first-person view across the Tallow Ward's stone streets and timber-framed buildings."><span class="image-badge">THE TALLOW WARD <span aria-hidden="true">＋</span></span></button></div><div class="ward-copy"><p class="eyebrow">02 / A PLACE TO MAKE YOUR OWN</p><h2>Small workshop.<br><em>Big ambitions.</em></h2><p>Read a customer's note. Work out the remedy. Make the batch, deliver the bottles, and put your earnings back into the shop.</p><ul class="features"><li><span>01</span><div><h3>Learn your craft</h3><p>Discover recipes, try preparation methods, and weigh a remedy's benefits against its side effects.</p></div></li><li><span>02</span><div><h3>Grow your operation</h3><p>Turn a few coins into more planters, shelving, and better brewing equipment.</p></div></li><li><span>03</span><div><h3>Bring a friend to the bench</h3><p>The current prototype supports a host and up to three guests over LAN, sharing a workshop and discoveries.</p></div></li></ul></div></div></section>
+
+    <section id="screenshots" class="wrap section screenshots"><div class="section-heading"><div><p class="eyebrow">03 / STRAIGHT FROM THE GAME</p><h2>Take a <em>closer look.</em></h2></div><p>Actual screenshots from the development build. The ward, workshop, and everything in them are still taking shape.</p></div><div class="gallery"><figure><button class="image-button" data-open-image aria-label="Enlarge grinding screenshot"><img src="assets/grinding.webp" width="1280" height="720" loading="lazy" alt="Grinding bogmint in a mortar with a pestle, using circular tool input."><span class="image-badge">AT THE PREP BENCH <span aria-hidden="true">＋</span></span></button><figcaption>Every batch starts at the bench.</figcaption></figure><figure><button class="image-button" data-open-image aria-label="Enlarge brewing screenshot"><img src="assets/brewing.webp" width="1280" height="720" loading="lazy" alt="A copper brewing pot filled with a green remedy, stirred with a wooden spoon."><span class="image-badge">SOMETHING IS BREWING <span aria-hidden="true">＋</span></span></button><figcaption>A little patience. A steady hand.</figcaption></figure><figure><button class="image-button" data-open-image aria-label="Enlarge bottling screenshot"><img src="assets/bottling.webp" width="1280" height="720" loading="lazy" alt="Filling a glass remedy bottle toward its marked target level."><span class="image-badge">THE FINISHING TOUCH <span aria-hidden="true">＋</span></span></button><figcaption>Fill to the mark. Finish with a cork.</figcaption></figure></div></section>
+
+    <section id="demo" class="demo-section wrap"><div class="demo-decoration" aria-hidden="true">✳</div><p class="eyebrow">YOUR FIRST BATCH IS WAITING</p><h2>Ready to make<br><em>a little trouble?</em></h2><p id="demo-description">The Windows demo is still brewing. When it's ready, you'll be able to download it right here.</p><a class="button primary" id="download-demo" href="#demo-status" aria-describedby="demo-status">Demo coming soon <span aria-hidden="true">↗</span></a><p id="demo-status" class="micro" tabindex="-1">IN DEVELOPMENT · RELEASE DATE TO BE ANNOUNCED</p><p class="demo-honesty">No public download yet. This page will be updated when the demo is ready.</p></section>
+
+    <section class="wrap faq section"><p class="eyebrow">A FEW THINGS TO KNOW</p><details><summary>What kind of game is Brewing Bad?<span aria-hidden="true">＋</span></summary><p>A first-person alchemy and workshop game. Grow and gather ingredients, prepare them by hand, brew remedies, and fill customer requests to develop your apothecary.</p></details><details><summary>When can I play?<span aria-hidden="true">＋</span></summary><p>A Windows PC demo is planned. There isn't a public release date yet. The download will appear in the demo section when it's ready.</p></details><details><summary>Can I play with friends?<span aria-hidden="true">＋</span></summary><p>The prototype supports one host and up to three guests on a trusted local network. Online matchmaking and Steam invitations are not available in the current build. Demo multiplayer details will be confirmed before release.</p></details><details><summary>Is this what the game really looks like?<span aria-hidden="true">＋</span></summary><p>Yes. The screenshots come from the playable development build. Morra and Hazel in the header are the actual game models, posed and rendered in Blender. Visuals and features may change during development.</p></details></section>
+  </main>
+  <footer class="wrap footer"><a class="batty" href="/">BATTY<span>DEV</span></a><p>BREWING BAD <span>·</span> AN INDEPENDENT GAME IN DEVELOPMENT</p><a href="#main">Back to the top ↑</a></footer>
+  <dialog id="image-dialog" aria-label="Gameplay screenshot"><button class="dialog-close" aria-label="Close screenshot">Close ×</button><img id="dialog-image" alt=""><p id="dialog-caption"></p></dialog>
+</body>
+</html>
