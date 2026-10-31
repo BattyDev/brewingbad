@@ -21,3 +21,5 @@ Serve this directory with any static HTTP server, or open `index.html` directly.
 ## Artwork
 
 Morra and Hazel use the game's actual meshes, materials, rigs, animation poses, and face expression atlases, rendered in Blender. Gameplay images are actual development-build screenshots compressed to WebP. No AI-generated promotional imagery is used. Game content and visual quality remain in development.
+
+The PSX presentation uses reduced-resolution derivatives of the same character render and ward screenshot, with ordered dithering and reduced color precision. The full gameplay screenshots remain available in the image viewer. The menu frames, selection pointers, and repeating dither pattern are CSS/SVG.
