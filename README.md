@@ -24,4 +24,6 @@ Morra and Hazel use the game's actual meshes, materials, rigs, animation poses, 
 
 The cinematic presentation follows a design mockup selected by the owner. Generated mockups served as design references only; the live page uses actual game assets. Botanical details, the parchment texture, and the irregular paper edge are SVG/CSS.
 
-The current screenshots were captured October 30, 2026, from an isolated Unity 2022.3.62f2 build of that evening's source, including the new town textures, skyline, sky, and title screen. The dusk hero uses a crop of the current skyline capture. Gameplay captures retain their actual HUD and development-build indicators. Original game saves and logs are not published.
+The gameplay showcases use eight short silent MP4s captured October 31, 2026. Their posters come from the same media pack. Camera captures omit HUD overlays; gameplay inputs are scripted, and equipment funds and supplemental stock are staged in an isolated developer save. The dusk hero remains a crop of the October 30 skyline capture. Original game saves and logs are not published.
+
+Videos use native controls and inline playback. Only visible clips start automatically, and offscreen clips pause. The global autoplay control lets visitors disable motion; reduced-motion and data-saving preferences start with autoplay off. Without JavaScript, native video controls still work. GIFs and the internal review gallery remain in the local media pack and are not needed for the live page.
