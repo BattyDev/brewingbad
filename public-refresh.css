@@ -1,0 +1,6 @@
+/* Public-page capture additions; the invite keeps its own layout. */
+.opening-captures .gallery-world{margin-top:0}
+.capture-copy{font-size:14px;line-height:1.8;color:#526047;margin:13px 0 0}
+.scene-gallery .image-button img,.opening-captures .image-button img{aspect-ratio:16/9;object-fit:cover}
+.scene-gallery{row-gap:35px}
+@media(max-width:700px){.capture-copy{font-size:14px;line-height:1.75}.opening-captures .gallery{gap:32px}}

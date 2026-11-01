@@ -24,13 +24,13 @@ Morra and Hazel use the game's actual meshes, materials, rigs, animation poses, 
 
 The cinematic presentation follows a design mockup selected by the owner. Generated mockups served as design references only; the live page uses actual game assets. Botanical details, the parchment texture, and the irregular paper edge are SVG/CSS.
 
-The gameplay showcases use eight short silent MP4s captured October 31, 2026. Their posters come from the same media pack. Camera captures omit HUD overlays; gameplay inputs are scripted, and equipment funds and supplemental stock are staged in an isolated developer save. The dusk hero remains a crop of the October 30 skyline capture. Original game saves and logs are not published.
+The original workshop media pack contains eight short silent MP4s captured October 31, 2026. The current public page retains seven of those craft clips alongside the November 1 four-player clip. Their posters come from the same media pack. Camera captures omit HUD overlays; gameplay inputs are scripted, and equipment funds and supplemental stock are staged in an isolated developer save. The dusk hero remains a crop of the October 30 skyline capture. Original game saves and logs are not published.
 
 Videos appear as silent inline loops without player controls or click-to-pause behavior. Only visible clips start automatically, and offscreen clips pause. Reduced-motion and data-saving preferences show capture posters instead, as does blocked autoplay. Without JavaScript, posters remain visible. GIFs and the internal review gallery remain in the local media pack and are not needed for the live page.
 
 ## Friends invite — `/brewingbad/invite/`
 
-The invite is a separate vanilla HTML/CSS/JS page in `invite/`. The existing public promo page, its download config, CSS, JavaScript and social image stay unchanged. No build step or additional hosting is required: the parent Pages workflow includes the new directory automatically when this branch lands through a pull request. The invite is unlisted and carries `noindex, nofollow`; its files are public, which is not access control.
+The invite is a separate vanilla HTML/CSS/JS page in `invite/`. The public promo and invite have separate page scripts and download configs. The public media refresh described below reuses the invite captures. No build step or additional hosting is required: the parent Pages workflow includes the new directory automatically when this branch lands through a pull request. The invite is unlisted and carries `noindex, nofollow`; its files are public, which is not access control.
 
 Edit **`invite/demo-config.js`** for the friends build. It uses `window.BREWING_BAD_INVITE`, independent of the public page's `BREWING_BAD_DEMO`. Set `url`, `label`, `buildDate` (`YYYY-MM-DD`), `fileSize` and `sha256` from the exact downloadable ZIP. Use `Get-FileHash <build.zip> -Algorithm SHA256` for the checksum. Blank URL means no download link, with an honest “ask me for the current build” message. Unknown metadata says “To be confirmed”; capture dates are never presented as a distributable build date. Only absolute HTTP(S) URLs without embedded credentials become download links. Bump the corresponding `?v=` queries in `invite/index.html` whenever its CSS, script or config changes. Shared asset queries remain unchanged because their files are unchanged.
 
@@ -61,7 +61,7 @@ Every new shipped media file:
 | `coop.webp` | `CoopSky/Host/coop.png`; connected host and joiner on the road, camera framing and local-player visibility staged. |
 | `title.webp` | `Menu/title.png`; actual title screen, including Host Address, UI retained. |
 | `save-slots.webp` | `Menu/save-slots.png`; actual five-slot menu, developer save in slot 1. |
-| `social.jpg` | 1200 × 675 crop/resize of `FerryCamera/intro-4.png`, darkened with a plain title/pitch overlay. Used only by the invite's share metadata. The public promo's `assets/social.jpg` is unchanged. |
+| `social.jpg` | 1200 × 675 crop/resize of `FerryCamera/intro-4.png`, darkened with a plain title/pitch overlay. Used only by the invite's share metadata. The public promo uses its own share image and tagline; see the refresh notes below. |
 
 Existing `assets/alchemists.webp` (Morra/Hazel's game meshes posed in Blender), `assets/town-dusk-current.webp`, the SVG/CSS paper textures and the four October 31 craft loops/posters (`harvesting`, `grinding`, `stirring`, `bottling`) are reused. Their filming notes above still apply: scripted real inputs, HUD hidden, isolated developer-funded equipment/stock. The invite copies the existing visible-only autoplay logic, pauses offscreen/hidden clips, and uses posters for reduced motion, data saver, blocked autoplay and no JavaScript.
 
@@ -69,13 +69,21 @@ The four-friends showcase was captured on 1 November 2026 from the same isolated
 
 ### Invite review
 
-The four new page captures below are browser screenshots compressed to WebP; before is the unchanged public promo, after is the separate invite. They contain no game runtime saves/logs or personal data.
+The four new page captures below are browser screenshots compressed to WebP; before is the public promo at invite launch, after is the separate invite. They contain no game runtime saves/logs or personal data.
 
 | Width | Before | After |
 | --- | --- | --- |
 | Desktop, 1440 px | [Before](review/invite/before-desktop.webp) | [After](review/invite/after-desktop.webp) |
 | Phone, 390 px | [Before](review/invite/before-phone.webp) | [After](review/invite/after-phone.webp) |
 
-Browser QA serves the repo at `/brewingbad/`, matching production nesting. Checked 320, 390, 768 and 1440 px: no horizontal overflow, all images load, no script errors. Verified empty URL/no href; a test HTTPS URL with config-driven date/size/SHA; invalid/unsafe URL fallback; no-JavaScript messaging; keyboard craft tabs; reduced-motion and data-saver posters; normal visible-only playback/offscreen pause. The example URL is injected only during QA and is not saved in config. Existing promo files are unchanged.
+Browser QA serves the repo at `/brewingbad/`, matching production nesting. Checked 320, 390, 768 and 1440 px: no horizontal overflow, all images load, no script errors. Verified empty URL/no href; a test HTTPS URL with config-driven date/size/SHA; invalid/unsafe URL fallback; no-JavaScript messaging; keyboard craft tabs; reduced-motion and data-saver posters; normal visible-only playback/offscreen pause. The example URL is injected only during QA and is not saved in config. At invite launch, the existing promo files were unchanged.
 
 The game-wide `Tests/Smoke-FreshCoop.ps1` was also attempted with the pre-existing November 1 player. It timed out waiting for the guest to try the gate, so this work does not claim a passing full co-op gameplay smoke test. The co-op media captures separately confirm two and four connected players of the current-source capture build, with all four emote actions received by the host for the four-player clip. This website change does not modify game behavior.
+
+## Public promo media refresh — 1 November 2026
+
+The public `/brewingbad/` page now reuses the November 1 ferry, Morra, Relief Hall, Lower City Gate, byre before/after, Tallow square and Lower Market stills from `invite/assets/`, plus `coop-four-friends.mp4` and its matching poster. Media is shared by path rather than duplicated; all capture provenance and filming staging above still apply. The October 31 craft loops remain, with their date clearly distinguished from the new captures. The four-player clip replaces the old equipment-placement showcase. The opening and workshop copy now describe the ferry/byre opening, gate papers and shared co-op progression.
+
+The public `assets/social.jpg` is refreshed from `invite/assets/ferry-arrival.webp`, with the public page's existing tagline as a plain text overlay. Its share-image query is bumped to `?v=4`. Root `script.js` tightens the grow-step copy and is included with `?v=6`. New root-only `public-refresh.css?v=1` styles the screenshot captions. The shared stylesheet and invite files are unchanged. The public demo config and its coming-soon state are preserved.
+
+[Desktop refresh review](review/public-refresh/after-desktop.webp) · [Phone refresh review](review/public-refresh/after-phone.webp). Browser checks cover 320, 390, 768 and 1440 px, loaded images, craft tabs and keyboard navigation, default/test demo config, silent visible-only playback and reduced-motion/data-saver posters.
