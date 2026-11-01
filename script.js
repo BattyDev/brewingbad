@@ -28,7 +28,7 @@
   document.addEventListener('visibilitychange', () => clips.forEach(playIfAllowed));
 
   const steps = {
-    grow: ['harvesting', 'Start with something green.', 'Tend your planters, water your herbs, and harvest them part by part. There are more ingredients to find beyond your own front door.', 'Harvest bogmint by trimming ripe parts from the planter.'],
+    grow: ['harvesting', 'Start with something green.', 'Water your herbs, then harvest them part by part.', 'Harvest bogmint by trimming ripe parts from the planter.'],
     prep: ['grinding', 'A recipe is only the beginning.', 'Circle the pestle to grind leaves into mash. Make deliberate cuts to prepare roots and mushrooms. Your tools follow your input.', 'Circle the pestle to grind leaves into prepared mash.'],
     brew: ['stirring', 'Put a little effort in the pot.', 'Load your prepared ingredients, light the fire, and work the spoon. Give the batch time to extract before you reach for a bottle.', 'Work the spoon over the lit copper brewing pot.'],
     bottle: ['bottling', 'Make every drop count.', 'Tip the pot, pour to the gold mark, and cork the bottle. A remedy is only a finished item once you have sealed it.', 'Tip the cauldron, fill a bottle to its mark, and finish the bottle.']
