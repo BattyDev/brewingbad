@@ -28,10 +28,10 @@
   document.addEventListener('visibilitychange', () => clips.forEach(playIfAllowed));
 
   const steps = {
-    grow: ['harvesting', 'Start with something green.', 'Water your herbs, then harvest them part by part.', 'Harvest bogmint by trimming ripe parts from the planter.'],
-    prep: ['grinding', 'A recipe is only the beginning.', 'Circle the pestle to grind leaves into mash. Make deliberate cuts to prepare roots and mushrooms. Your tools follow your input.', 'Circle the pestle to grind leaves into prepared mash.'],
-    brew: ['stirring', 'Put a little effort in the pot.', 'Load your prepared ingredients, light the fire, and work the spoon. Give the batch time to extract before you reach for a bottle.', 'Work the spoon over the lit copper brewing pot.'],
-    bottle: ['bottling', 'Make every drop count.', 'Tip the pot, pour to the gold mark, and cork the bottle. A remedy is only a finished item once you have sealed it.', 'Tip the cauldron, fill a bottle to its mark, and finish the bottle.']
+    grow: ['harvesting', 'Start with something green.', 'Water your herbs, then snip them leaf by leaf.', 'Snip a grown bogmint plant leaf by leaf.'],
+    prep: ['grinding', 'A recipe is only the beginning.', 'Lay fresh herbs on the bench’s left tray, then circle the pestle to grind leaves into mash, or cut roots and mushrooms at the marks. Prepared portions wait on the right tray.', 'Circle the pestle to grind leaves into prepared mash.'],
+    brew: ['stirring', 'Put a little effort in the pot.', 'Set your prepared ingredients and empty bottles on the cauldron’s trays, tip the ingredients in, strike the flint and work the spoon.', 'Work the spoon round the lit cauldron.'],
+    bottle: ['bottling', 'Make every drop count.', 'Dip the ladle, pour into the bottle under the funnel, and cork it. A remedy is only a finished item once you have sealed it.', 'Ladle the brew into a bottle under the funnel, then cork it.']
   };
   const tabs = [...document.querySelectorAll('[role=tab]')];
   const processVideo = document.getElementById('process-video');
@@ -43,9 +43,9 @@
     });
     const [file, title, copy, label] = steps[tab.dataset.step];
     processVideo.pause();
-    processVideo.poster = 'assets/workshop/' + file + '.webp';
-    processVideo.querySelector('source').src = 'assets/workshop/' + file + '.mp4';
-    processVideo.querySelector('a').href = 'assets/workshop/' + file + '.mp4';
+    processVideo.poster = 'assets/film/' + file + '.webp';
+    processVideo.querySelector('source').src = 'assets/film/' + file + '.mp4';
+    processVideo.querySelector('a').href = 'assets/film/' + file + '.mp4';
     processVideo.setAttribute('aria-label', label);
     processVideo.load();
     document.getElementById('process-title').textContent = title;

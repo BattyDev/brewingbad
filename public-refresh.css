@@ -4,3 +4,5 @@
 .scene-gallery .image-button img,.opening-captures .image-button img{aspect-ratio:16/9;object-fit:cover}
 .scene-gallery{row-gap:35px}
 @media(max-width:700px){.capture-copy{font-size:14px;line-height:1.75}.opening-captures .gallery{gap:32px}}
+/* The trailer has sound, so it keeps the player controls the silent loops leave out. */
+.trailer-section{padding-bottom:40px}.trailer-section .video-frame{border:5px solid #e6d6b1;outline:1px solid #9c8c6250}.trailer-section .video-frame video{pointer-events:auto;background:#000}
