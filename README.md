@@ -28,6 +28,15 @@ The original workshop media pack contains eight short silent MP4s captured Octob
 
 Videos appear as silent inline loops without player controls or click-to-pause behavior. Only visible clips start automatically, and offscreen clips pause. Reduced-motion and data-saving preferences show capture posters instead, as does blocked autoplay. Without JavaScript, posters remain visible. GIFs and the internal review gallery remain in the local media pack and are not needed for the live page.
 
+## Trailer and film media — 14 November 2026
+
+The trailer and everything under `assets/film/` were filmed by the game itself (`TrailerFilm.cs`, `--film-trailer`) from a development build of the demo, with the HUD hidden, then cut with `Tools/Make-Trailer.ps1` in the Unity project. No frames are retouched or generated.
+
+- **Town shots** (ferry, Tallow, Morra, the gate, Hazel, Wend Hollows, the dusk hero) come from a fresh Map 2 world. Cameras fly on scripted paths where a player can't, and the clock, gate papers and ferry pass are set for each shot.
+- **Craft loops** (watering, harvesting, slicing, grinding, stirring, bottling) come from a second fresh world. The film buys the byre from Morra, places her five starter stations through the placement rules, and works them through the station trays with scripted input. Plant growth is skipped forward.
+- `trailer.mp4` is the 720p cut (about 88 s, 11 MB) with the game's title theme. It keeps its player controls because it has sound; the silent loops don't.
+- The shelf-stocking loop (31 October) and the alms barrel and four-player captures (1 November) are older and stay as they were.
+
 ## Friends invite — `/brewingbad/invite/`
 
 The invite is a separate vanilla HTML/CSS/JS page in `invite/`. The public promo and invite have separate page scripts and download configs. The public media refresh described below reuses the invite captures. No build step or additional hosting is required: the parent Pages workflow includes the new directory automatically when this branch lands through a pull request. The invite is unlisted and carries `noindex, nofollow`; its files are public, which is not access control.
