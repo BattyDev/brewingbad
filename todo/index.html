@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#14201b">
+  <title>Brewing Bad To-Do</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Cinzel:wght@500;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{color-scheme:light;--forest:#16241d;--ink:#203429;--cream:#efe3c7;--card:#f6edd7;--gold:#d7b875;--bronze:#95733d;--muted:#5c614c;--line:#8c815450;--done:#7d8a6a;
+      --serif:'Cormorant Garamond',Georgia,serif;--title:'Cinzel',Georgia,serif;--sans:'DM Sans',Arial,sans-serif}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:var(--sans);color:var(--ink);background:radial-gradient(ellipse at 20% 10%,#fff7df65,transparent 65%),url('../assets/paper-grain.svg'),var(--cream)}
+    a{color:inherit}
+    .wrap{width:calc(100% - 32px);max-width:880px;margin-inline:auto}
+    header{background:#14271e url('../assets/paper-grain.svg');color:var(--cream);border-bottom:1px solid #b49b5a70}
+    header .wrap{padding:28px 0 34px}
+    .batty{font:600 15px/1 var(--title);letter-spacing:1px;text-decoration:none}.batty b{color:var(--gold);font-weight:600}
+    .eyebrow{font:600 10px/1.6 var(--title);letter-spacing:2.2px;text-transform:uppercase;color:var(--gold);margin:28px 0 8px}
+    h1{font:600 clamp(40px,8vw,64px)/1 var(--serif);margin:0;letter-spacing:-1px}
+    h1 em{color:#e2c88a}
+    .lede{font:19px/1.5 var(--serif);color:#c7c9ae;margin:14px 0 0;max-width:620px}
+    .meta{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:20px;font:500 11px/1.4 var(--sans);color:#b7bbaa}
+    .meta code{font-family:ui-monospace,Consolas,monospace;color:#e8d7aa}
+    .bar{position:sticky;top:0;z-index:5;background:#efe3c7f2;backdrop-filter:blur(4px);border-bottom:1px solid var(--line)}
+    .bar .wrap{display:flex;align-items:center;gap:14px;padding:12px 0;flex-wrap:wrap}
+    .progress{flex:1;min-width:160px;height:8px;background:#d9cba6;border-radius:4px;overflow:hidden}
+    .progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,#597046,#95733d);transition:width .3s}
+    .count{font:600 12px/1 var(--title);letter-spacing:1px;white-space:nowrap}
+    .bar label{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px;cursor:pointer}
+    .bar button{font:500 12px/1 var(--sans);background:none;border:1px solid var(--line);padding:7px 12px;color:var(--muted);cursor:pointer}
+    .bar button:hover{border-color:var(--bronze);color:var(--ink)}
+    main{padding:28px 0 60px}
+    section{margin-top:34px}
+    h2{font:600 32px/1.1 var(--serif);margin:0;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+    h2 small{font:600 10px/1 var(--title);letter-spacing:1.8px;text-transform:uppercase;color:var(--bronze)}
+    .why{font:17px/1.45 var(--serif);color:var(--muted);margin:6px 0 14px}
+    ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+    li{border-bottom:1px solid var(--line)}
+    li label{display:grid;grid-template-columns:22px 1fr;gap:12px;padding:14px 6px;cursor:pointer}
+    li label:hover{background:#c7c19926}
+    input[type=checkbox]{appearance:none;width:20px;height:20px;margin:2px 0 0;border:1.5px solid var(--bronze);background:var(--card);display:grid;place-items:center;cursor:pointer}
+    input[type=checkbox]:checked{background:#597046;border-color:#597046}
+    input[type=checkbox]:checked::after{content:'';width:5px;height:10px;border:solid var(--cream);border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
+    input[type=checkbox]:focus-visible{outline:2px solid #a87932;outline-offset:3px}
+    .t{display:block;font:600 15px/1.35 var(--sans);color:var(--forest)}
+    .d{display:block;font:14px/1.6 var(--sans);color:var(--muted);margin-top:3px}
+    .d code,.t code{font:13px ui-monospace,Consolas,monospace;background:#e3d5b2;padding:1px 4px;border-radius:2px;word-break:break-word}
+    .tag{display:inline-block;font:600 9px/1 var(--title);letter-spacing:1.3px;text-transform:uppercase;padding:4px 6px;margin-left:6px;vertical-align:2px;border:1px solid}
+    .tag.rel{color:#8a3b22;border-color:#8a3b2266}.tag.you{color:#597046;border-color:#59704666}.tag.ai{color:#6d5a2d;border-color:#6d5a2d66}
+    li.done .t,li.done .d{color:var(--done);text-decoration:line-through;text-decoration-color:#7d8a6a88}
+    body.hide-done li.done{display:none}
+    footer{border-top:1px solid var(--line);padding:22px 0 40px;font-size:12px;color:var(--muted);line-height:1.7}
+    @media(max-width:600px){h2{font-size:27px}.lede{font-size:17px}li label{padding:12px 2px}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <a class="batty" href="/brewingbad/">BATTY<b>DEV</b> · BREWING BAD</a>
+      <p class="eyebrow">Demo review · 17 November 2026</p>
+      <h1>What's <em>still open</em></h1>
+      <p class="lede">Everything outstanding after the demo build (M1–M6) and the 17 November repo cleanup. Tick things off as you go; ticks are saved in this browser only.</p>
+      <div class="meta"><span>Branch <code>claude/map2-test-yard</code></span><span>Latest commit <code>f0e263b</code> (not pushed)</span><span>Checks: 1198 pass</span><span>Last itch release <code>60000bc</code></span></div>
+    </div>
+  </header>
+  <div class="bar"><div class="wrap">
+    <div class="progress" aria-hidden="true"><span id="fill"></span></div>
+    <span class="count" id="count">0 / 0</span>
+    <label><input type="checkbox" id="hide"> Hide done</label>
+    <button type="button" id="reset">Clear ticks</button>
+  </div></div>
+
+  <main class="wrap">
+    <p class="why" style="margin-top:0"><span class="tag rel">Before release</span> blocks the itch push. <span class="tag you">You</span> needs your eyes, ears or say-so. <span class="tag ai">AI</span> work an assistant can do once you decide.</p>
+
+    <section>
+      <h2>Owed by you <small>before release</small></h2>
+      <p class="why">Only you can close these. Each one is a gate for the public demo.</p>
+      <ul>
+        <li><label><input type="checkbox" data-id="pad-run"><span><span class="t">Controller-only play-through<span class="tag rel">Before release</span></span><span class="d">Play with only the pad using <code>Docs/ControllerChecklist.md</code>. Check the feel, the dead zones, and that every step can be done. The automated pad run passed all 68 steps, but it can't judge feel.</span></span></label></li>
+        <li><label><input type="checkbox" data-id="relay"><span><span class="t">Two-player Relay session over the internet<span class="tag rel">Before release</span></span><span class="d">Needs the Unity Cloud project linked and Relay enabled first. LAN and direct co-op passed 5 of 5 smoke runs; Relay itself has never been played by two people.</span></span></label></li>
+        <li><label><input type="checkbox" data-id="listen"><span><span class="t">Listen to the babble voices and the music<span class="tag you">You</span></span><span class="d">Voice samples are in <code>tmp/voice-samples/</code>. Only their length and loudness were checked by machine. The music test proved which theme plays where (35 of 35), not whether it sounds right.</span></span></label></li>
+        <li><label><input type="checkbox" data-id="numbers"><span><span class="t">Review the placeholder numbers and guessed designs<span class="tag you">You</span></span><span class="d">Everything is in <code>Docs/DemoNumbers.md</code>: prices, timings and voice settings, plus designs I guessed at — the spice factor's modifiers, the mudlarks' theft, the tier 2 and 3 parts, and the hose, mill and raised beds.</span></span></label></li>
+        <li><label><input type="checkbox" data-id="push"><span><span class="t">Say when to push the cleanup commit<span class="tag you">You</span></span><span class="d"><code>f0e263b</code> stashes Map 1, untracks <code>tmp/</code>, <code>Web/</code>, <code>ModelStudies/</code> and the music source, archives 63 old docs and moves the test scripts to <code>Scripts/Evidence/</code>. It's committed locally only.</span></span></label></li>
+        <li><label><input type="checkbox" data-id="itch"><span><span class="t">Go-ahead for the itch push<span class="tag rel">Before release</span></span><span class="d">The plan is <code>Tools/Release-Itch.ps1 -SkipBuild</code> on a fresh build. The friends' build is still <code>60000bc</code> from 15 November, before the art, content and sound passes.</span></span></label></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Decisions for you</h2>
+      <p class="why">Small calls with no right answer from the code.</p>
+      <ul>
+        <li><label><input type="checkbox" data-id="devflag"><span><span class="t">Keep Unity's Development flag on release builds?<span class="tag you">You</span></span><span class="d"><code>PrototypeBuilder.cs</code> builds with <code>BuildOptions.Development</code>, so the demo shows a "Development Build" watermark. Turning it off looks cleaner, but error logs get less detail.</span></span></label></li>
+        <li><label><input type="checkbox" data-id="hours"><span><span class="t">Hint that shops open at 8 AM?<span class="tag you">You</span></span><span class="d">Everyone wakes at 7 AM but shopkeepers stay indoors until 8 (<code>Catalog.CustomersOnShift</code>). A player who heads straight for the ferry finds nobody and gets no hint why.</span></span></label></li>
+        <li><label><input type="checkbox" data-id="anim-doc"><span><span class="t">Keep or drop <code>Docs/AnimationImportResearch-2026-11-17.md</code>?<span class="tag you">You</span></span><span class="d">A new untracked doc that I didn't write, probably from another AI tool. I left it out of the commit.</span></span></label></li>
+        <li><label><input type="checkbox" data-id="icons"><span><span class="t">Keep or drop the ChatGPT icons?<span class="tag you">You</span></span><span class="d">The PNGs in <code>ArtSource/Icons/Generated/</code> and <code>Resources/Icons/</code>, and the change to <code>Tools/Export-InventoryIcons.ps1</code>, have stayed uncommitted on purpose.</span></span></label></li>
+        <li><label><input type="checkbox" data-id="sidebranch"><span><span class="t">Merge or delete the old side branch<span class="tag you">You</span></span><span class="d"><code>claude/infallible-hawking-9daaba</code> (<code>b40b0c2</code>) was never merged. It also leaves a worktree under <code>.claude/worktrees/</code>.</span></span></label></li>
+        <li><label><input type="checkbox" data-id="site-media"><span><span class="t">Refresh this site's media?<span class="tag ai">AI</span></span><span class="d">The trailer and site media were refilmed on 15 November but never uploaded, and they predate the 16 November art pass. Worth refilming once the look issues below settle.</span></span></label></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Look issues <small>found, not fixed</small></h2>
+      <p class="why">Seen in captures. None blocks play; each is a small fix once you confirm it bothers you.</p>
+      <ul>
+        <li><label><input type="checkbox" data-id="endcard"><span><span class="t">The end card overlaps the top-right rank box<span class="tag ai">AI</span></span></span></label></li>
+        <li><label><input type="checkbox" data-id="dace"><span><span class="t">Dace the kennel keeper: "He" in the lines, a woman in a dress on screen<span class="tag ai">AI</span></span><span class="d">Seen in one talk shot; not checked further. Either the line or the preset is wrong.</span></span></label></li>
+        <li><label><input type="checkbox" data-id="hazel-scalp"><span><span class="t">Hazel shows bare scalp at the back of her head under the braid<span class="tag ai">AI</span></span><span class="d">Visible in the back views of the turnaround sheet.</span></span></label></li>
+        <li><label><input type="checkbox" data-id="side-faces"><span><span class="t">Morra's and Hazel's faces look flat and pale from the side<span class="tag ai">AI</span></span></span></label></li>
+        <li><label><input type="checkbox" data-id="bare-plain"><span><span class="t">Bare flat ground shows between town and hills from above ~20 m<span class="tag ai">AI</span></span><span class="d">The houses hide it from the street, so players mostly won't see it.</span></span></label></li>
+        <li><label><input type="checkbox" data-id="unseen"><span><span class="t">Playtest fixes never seen in a running game<span class="tag you">You</span></span><span class="d">The hollow arms, bust clipping, mouse drift, the pockets grid and trade split, and the hood pleats. Built and checked by code, but only your eyes in a real session confirm them.</span></span></label></li>
+        <li><label><input type="checkbox" data-id="footprints"><span><span class="t">The mudlarks' footprints may be hard to see<span class="tag ai">AI</span></span><span class="d">Never checked in a capture.</span></span></label></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Test gaps</h2>
+      <p class="why">Things the automated proofs don't reach yet.</p>
+      <ul>
+        <li><label><input type="checkbox" data-id="unity-build"><span><span class="t">Run a Unity build after the Evidence folder move<span class="tag ai">AI</span></span><span class="d">The 29 test scripts moved with their GUIDs intact and the type-check passes, but no Unity build has run since. The next build or editor open will confirm it.</span></span></label></li>
+        <li><label><input type="checkbox" data-id="pad-gaps"><span><span class="t">Pad play-through skips a few things<span class="tag ai">AI</span></span><span class="d">Order notes, full sales, and walking through the gate and over the bridge (it teleports instead).</span></span></label></li>
+        <li><label><input type="checkbox" data-id="ongui"><span><span class="t">Shelf grid and brew plan still read the pad inside <code>OnGUI</code><span class="tag ai">AI</span></span><span class="d">They work, but every other input is in <code>Update</code>.</span></span></label></li>
+        <li><label><input type="checkbox" data-id="frames"><span><span class="t">Re-measure frame times with the game in front<span class="tag ai">AI</span></span><span class="d">The numbers so far came from a minimised window next to busy apps. The world build already dropped from 194 s to 41 s.</span></span></label></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Later <small>not for the demo</small></h2>
+      <p class="why">Parked on purpose. Nothing here is agreed until you say so.</p>
+      <ul>
+        <li><label><input type="checkbox" data-id="music-gaps"><span><span class="t">Music gaps<span class="tag ai">AI</span></span><span class="d">The <code>caught</code> stinger has no recording. The barn, night and Hollows-night cues borrow the byre's lute. Your own guitar demos are a fallback.</span></span></label></li>
+        <li><label><input type="checkbox" data-id="hands"><span><span class="t">Real hands-on-station motions for other players<span class="tag ai">AI</span></span><span class="d">Other players' station work is shown as tool motions for now; it should become real hand-on-station interactions.</span></span></label></li>
+        <li><label><input type="checkbox" data-id="map1"><span><span class="t">Untangle Map 2 from Map 1's layout<span class="tag ai">AI</span></span><span class="d">Map 1 is stashed (only <code>--map1</code> reaches it; its blueprint lives in <code>_Map1Local/</code> on your PC). Its code can't go until Map 2 stops borrowing places, keeper spots and Morra's group from <code>CityLayout.json</code>.</span></span></label></li>
+        <li><label><input type="checkbox" data-id="ideas"><span><span class="t">Spitballed ideas from 7 November<span class="tag you">You</span></span><span class="d">Salves, glimmerdust, tinctures, candles, fire flasks and an adventuring-party event customer. Directions, not specs.</span></span></label></li>
+        <li><label><input type="checkbox" data-id="wiki"><span><span class="t">Game wiki and asset atlas<span class="tag ai">AI</span></span><span class="d">A readable map of the core loop, upgrade and crafting paths, plus every 2D icon and 3D model, so you and other AIs can check consistency away from the PC.</span></span></label></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="wrap">Generated by Claude from <code>Docs/SessionSummary-2026-11-17.md</code> and the 17 November cleanup. This page isn't linked from the site and asks search engines not to index it.</footer>
+
+  <script>
+    (function(){
+      var KEY='bb-todo-2026-11-17',boxes=[].slice.call(document.querySelectorAll('li input[type=checkbox]')),state={};
+      try{state=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){state={}}
+      function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}}
+      function paint(){var n=0;boxes.forEach(function(b){var on=!!state[b.dataset.id];b.checked=on;b.closest('li').classList.toggle('done',on);if(on)n++});
+        document.getElementById('count').textContent=n+' / '+boxes.length+' done';document.getElementById('fill').style.width=(boxes.length?n/boxes.length*100:0)+'%';
+        var hide=document.getElementById('hide');hide.checked=!!state._hide;document.body.classList.toggle('hide-done',!!state._hide)}
+      boxes.forEach(function(b){b.addEventListener('change',function(){if(b.checked)state[b.dataset.id]=1;else delete state[b.dataset.id];save();paint()})});
+      document.getElementById('hide').addEventListener('change',function(e){state._hide=e.target.checked?1:0;save();paint()});
+      document.getElementById('reset').addEventListener('click',function(){var h=state._hide;state={_hide:h};save();paint()});
+      paint();
+    })();
+  </script>
+</body>
+</html>
